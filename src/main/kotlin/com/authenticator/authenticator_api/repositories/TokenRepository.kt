@@ -9,6 +9,5 @@ import java.util.UUID
 @Repository
 interface TokenRepository : JpaRepository<PasswordResetToken, UUID> {
     fun findByToken(token: String): PasswordResetToken?
-    fun findByUser(user: User): PasswordResetToken?
     fun deleteByUser(user: User)
 }

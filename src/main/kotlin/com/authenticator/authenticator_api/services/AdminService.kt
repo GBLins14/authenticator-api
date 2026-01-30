@@ -9,14 +9,11 @@ import com.authenticator.authenticator_api.enums.Role
 import com.authenticator.authenticator_api.exceptions.BadRequestException
 import com.authenticator.authenticator_api.exceptions.ConflictException
 import com.authenticator.authenticator_api.exceptions.NotFoundException
-import com.authenticator.authenticator_api.exceptions.UnauthorizedException
-import com.authenticator.authenticator_api.models.CustomUserDetails
 import com.authenticator.authenticator_api.models.User
 import com.authenticator.authenticator_api.repositories.AccountRepository
 import com.authenticator.authenticator_api.utils.validateHierarchy
 import jakarta.transaction.Transactional
 import org.springframework.data.repository.findByIdOrNull
-import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Service
 import java.time.Instant
 import kotlin.enums.EnumEntries

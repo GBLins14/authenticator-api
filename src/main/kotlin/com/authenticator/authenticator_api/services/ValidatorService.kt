@@ -46,42 +46,7 @@ class ValidatorService {
             return false
         }
     }
-
-    fun isValidCnpj(cnpj: String): Boolean {
-        val cleanedCnpj = cleanCpfOrCnpj(cnpj)
-
-        if (cleanedCnpj.length != 14) return false
-
-        if (cleanedCnpj.all { it == cleanedCnpj[0] }) return false
-
-        try {
-            val weight1 = intArrayOf(5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2)
-            var sum1 = 0
-            for (i in 0..11) {
-                sum1 += cleanedCnpj[i].toString().toInt() * weight1[i]
-            }
-
-            var d1 = sum1 % 11
-            d1 = if (d1 < 2) 0 else 11 - d1
-
-            if (cleanedCnpj[12].toString().toInt() != d1) return false
-
-            val weight2 = intArrayOf(6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2)
-            var sum2 = 0
-            for (i in 0..12) {
-                sum2 += cleanedCnpj[i].toString().toInt() * weight2[i]
-            }
-
-            var d2 = sum2 % 11
-            d2 = if (d2 < 2) 0 else 11 - d2
-
-            return cleanedCnpj[13].toString().toInt() == d2
-
-        } catch (_: NumberFormatException) {
-            return false
-        }
-    }
-
+    
     fun isValidPhone(phone: String): Boolean {
         val cleanedPhone = phone.replace(Regex("[^0-9]"), "")
         return phoneRegex.matches(cleanedPhone)
