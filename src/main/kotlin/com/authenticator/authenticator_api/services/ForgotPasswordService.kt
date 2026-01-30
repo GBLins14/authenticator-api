@@ -9,8 +9,8 @@ import org.springframework.web.client.RestClient
 
 @Service
 class ForgotPasswordService(
-    @Value($$"${resend.resend-api-key}") private val apiKey: String,
-    @Value($$"${app.password-recovery.token-expiration-minutes}") private val TOKEN_EXPIRATION_MINUTES: Long,
+    @Value("\${resend.resend-api-key}") private val apiKey: String,
+    @Value("\${app.password-recovery.token-expiration-minutes}") private val TOKEN_EXPIRATION_MINUTES: Long,
 ) {
     private val logger = LoggerFactory.getLogger(ForgotPasswordService::class.java)
 
@@ -121,7 +121,7 @@ class ForgotPasswordService(
         )
 
         try {
-            val response = restClient.post()
+            restClient.post()
                 .uri("/emails")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(emailRequest)
