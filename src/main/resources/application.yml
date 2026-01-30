@@ -1,0 +1,39 @@
+resend:
+  resend-api-key: ${RESEND_API_KEY}
+
+app:
+  frontend-url: ${APP_FRONTEND_URL}
+  swagger-url: ${APP_SWAGGER_URL}
+  max-requests-per-minutes: ${APP_MAX_REQUESTS_PER_MINUTES}
+
+  sign:
+    min-fullname-length: ${APP_MIN_FULLNAME_LENGTH}
+    min-username-length: ${APP_MIN_USERNAME_LENGTH}
+    max-username-length: ${APP_MAX_USERNAME_LENGTH}
+    min-password-length: ${APP_MIN_PASSWORD_LENGTH}
+    max-password-length: ${APP_MAX_PASSWORD_LENGTH}
+    max-attempts: ${APP_MAX_ATTEMPTS}
+    lockout-minutes: ${APP_LOCKOUT_MINUTES}
+
+  password-recovery:
+    token-expiration-minutes: ${APP_TOKEN_EXPIRATION_MINUTES}
+
+jwt:
+  jwt-secret: ${SPRING_JWT_SECRET}
+  jwt-expiration-days: ${SPRING_JWT_EXPIRATION_DAYS}
+
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER}
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true

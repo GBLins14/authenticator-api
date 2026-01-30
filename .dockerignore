@@ -1,0 +1,8 @@
+.env
+.git
+.gitignore
+.idea
+.gradle
+build
+node_modules
+*.log

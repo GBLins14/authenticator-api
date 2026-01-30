@@ -1,0 +1,35 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: authenticator-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: authenticator_db
+      POSTGRES_USER: ${SPRING_DATASOURCE_USERNAME}
+      POSTGRES_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"
+    networks:
+      - authenticator-network
+
+  api:
+    build: .
+    container_name: authenticator-backend
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    env_file:
+      - .env
+    networks:
+      - authenticator-network
+
+volumes:
+  postgres_data:
+
+networks:
+  authenticator-network:
+    driver: bridge
