@@ -1,33 +1,33 @@
 resend:
-  resend-api-key: ${RESEND_API_KEY}
+  resend-api-key: ${RESEND_API_KEY:re_ADSASDASDASD}
 
 app:
-  frontend-url: ${APP_FRONTEND_URL}
-  swagger-url: ${APP_SWAGGER_URL}
-  max-requests-per-minutes: ${APP_MAX_REQUESTS_PER_MINUTES}
+  frontend-url: ${APP_FRONTEND_URL:http://localhost:3000}
+  swagger-url: ${APP_SWAGGER_URL:http://localhost:8080}
+  max-requests-per-minutes: ${APP_MAX_REQUESTS_PER_MINUTES:40}
 
   sign:
-    min-fullname-length: ${APP_MIN_FULLNAME_LENGTH}
-    min-username-length: ${APP_MIN_USERNAME_LENGTH}
-    max-username-length: ${APP_MAX_USERNAME_LENGTH}
-    min-password-length: ${APP_MIN_PASSWORD_LENGTH}
-    max-password-length: ${APP_MAX_PASSWORD_LENGTH}
-    max-attempts: ${APP_MAX_ATTEMPTS}
-    lockout-minutes: ${APP_LOCKOUT_MINUTES}
+    min-fullname-length: ${APP_MIN_FULLNAME_LENGTH:7}
+    min-username-length: ${APP_MIN_USERNAME_LENGTH:4}
+    max-username-length: ${APP_MAX_USERNAME_LENGTH:20}
+    min-password-length: ${APP_MIN_PASSWORD_LENGTH:6}
+    max-password-length: ${APP_MAX_PASSWORD_LENGTH:30}
+    max-attempts: ${APP_MAX_ATTEMPTS:5}
+    lockout-minutes: ${APP_LOCKOUT_MINUTES:5}
 
   password-recovery:
-    token-expiration-minutes: ${APP_TOKEN_EXPIRATION_MINUTES}
+    token-expiration-minutes: ${APP_TOKEN_EXPIRATION_MINUTES:5}
 
 jwt:
-  jwt-secret: ${SPRING_JWT_SECRET}
-  jwt-expiration-days: ${SPRING_JWT_EXPIRATION_DAYS}
+  jwt-secret: ${SPRING_JWT_SECRET:aB3cDeFgHiJkLmNoPqRsT9UvWxYz1234567890aBcDeFgHiJkLmNoPqRsT}
+  jwt-expiration-days: ${SPRING_JWT_EXPIRATION_DAYS:7}
 
 spring:
   datasource:
-    url: ${SPRING_DATASOURCE_URL}
-    username: ${SPRING_DATASOURCE_USERNAME}
-    password: ${SPRING_DATASOURCE_PASSWORD}
-    driver-class-name: ${SPRING_DATASOURCE_DRIVER}
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://ep-tiny-cherry-ahbw81l4-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require}
+    username: ${SPRING_DATASOURCE_USERNAME:neondb_owner}
+    password: ${SPRING_DATASOURCE_PASSWORD:npg_Aq0zrZsgk7ha}
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER:org.postgresql.Driver}
 
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect

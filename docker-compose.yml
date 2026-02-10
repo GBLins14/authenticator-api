@@ -22,8 +22,6 @@ services:
       - "8080:8080"
     depends_on:
       - db
-    env_file:
-      - .env
     networks:
       - authenticator-network
 
@@ -32,4 +30,4 @@ volumes:
 
 networks:
   authenticator-network:
-    driver: bridge
+
