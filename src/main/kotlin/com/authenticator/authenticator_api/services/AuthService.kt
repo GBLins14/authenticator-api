@@ -48,7 +48,7 @@ class AuthService(
     @Transactional
     fun register(request: SignUpDto): String {
         val cleanedCpf = validatorUtil.cleanCpfOrCnpj(request.cpf)
-        val username = request.username.trim()
+        val username = request.username.lowercase().trim()
 
         if (request.fullName.length < MIN_FULLNAME_LENGTH) {
             throw BadRequestException("É necessário inserir o seu nome completo.")
@@ -114,7 +114,8 @@ class AuthService(
 
     @Transactional
     fun login(request: SignInDto): String {
-        val user = accountRepository.findByUsernameOrEmail(request.login, request.login)
+        val login = request.login.lowercase().trim()
+        val user = accountRepository.findByUsernameOrEmail(login, login)
             ?: throw UnauthorizedException("Usuário ou senha incorretos.")
 
         if (user.banned) {
@@ -167,6 +168,7 @@ class AuthService(
 
     @Transactional
     fun processForgotPassword(email: String) {
+        val email = email.lowercase().trim()
         val user = accountRepository.findByEmail(email) ?: return
         tokenRepository.deleteByUser(user)
         tokenRepository.flush()
